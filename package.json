@@ -1,0 +1,38 @@
+{
+  "name": "summative_webapp",
+  "version": "1.0.0",
+  "description": "Summative assignment for university",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:css": "npx tailwindcss -i ./public/css/styles.css -o ./public/css/tailwind-output.css --watch"
+  },
+  "author": "Balazs Hernadi",
+  "license": "ISC",
+  "dependencies": {
+    "@azure/identity": "^4.5.0",
+    "@azure/storage-blob": "^12.26.0",
+    "bcrypt": "^5.1.1",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.21.0",
+    "express-ejs-layouts": "^2.5.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.9.0",
+    "mongoose": "^8.7.1",
+    "multer": "^1.4.5-lts.1",
+    "nodemon": "^3.1.7",
+    "swiper": "^11.1.14",
+    "uuid": "^11.0.3"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^9.2.0",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
+    "prettier": "^3.3.3",
+    "prettier-plugin-tailwindcss": "^0.6.8",
+    "tailwindcss": "^3.4.14",
+    "tailwindcss-motion": "^0.4.3-beta"
+  }
+}
