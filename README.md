@@ -171,5 +171,28 @@ This project was a significant challenge, as it combined full creative freedom w
 
 A key lesson was in project scoping; my initial ambition had to be balanced with practical time constraints, which meant prioritising core functionalities over extra features. Ultimately, this project provided a strong foundation in web development, and I'm eager to build on this knowledge.
 
+# Screenshots
+
+A mix of screenshots of features in both mobile and desktop layouts.
+
+<img width="931" height="544" alt="image" src="https://github.com/user-attachments/assets/8ca40567-fc39-4abd-8811-e39ccbf73e6f" />
+
+<img width="603" height="302" alt="image" src="https://github.com/user-attachments/assets/a182e047-bdc9-4c2f-9444-aa6693f5ca29" />
+
+<img width="318" height="424" alt="image" src="https://github.com/user-attachments/assets/772155a6-752a-4cc3-8147-dce9658edf49" />
+
+<img width="291" height="464" alt="image" src="https://github.com/user-attachments/assets/cf7ab670-2f0f-4175-8d83-7d6f06202913" />
+
+<img width="290" height="592" alt="image" src="https://github.com/user-attachments/assets/64fb8dda-46c5-4916-b2b7-ffc10c3ffa70" />
+
+<img width="484" height="345" alt="image" src="https://github.com/user-attachments/assets/ed955e98-7b11-4868-8967-491a66ae2b97" />
+
+<img width="352" height="524" alt="image" src="https://github.com/user-attachments/assets/7d422e7d-85ec-40fe-9ef4-1d6ff4be2bca" />
+
+
+
+
+
+
 
 
