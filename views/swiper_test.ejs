@@ -1,0 +1,13 @@
+<div class="flex justify-center mt-6">
+    <div class="swiper mySwiper max-w-screen-sm md:max-w-4xl lg:max-w-6xl mx-auto">
+        <div class="swiper-wrapper">
+            <% animals.forEach(element => { %>
+                <div class="swiper-slide">
+                    <%- include('partials/animalCard.ejs', { pet: element }) %>
+                    <div class="swiper-lazy-preloader"></div>
+                </div>
+            <% }) %>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+</div>

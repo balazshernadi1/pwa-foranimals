@@ -1,0 +1,44 @@
+<div class="mx-3 mt-3 flex flex-col justify-center items-center gap-12">
+    <div>
+        <h1 class="text-center text-3xl font-bold p-2">Ongoing Donations</h1>
+    </div>
+    <div>
+        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            <% donations.forEach((campaign) => { %>
+                <li class="mb-6 motion-scale-in motion-duration-[1000ms]">
+                    <div class="p-4 bg-gray-100 rounded-md shadow-md campaign" data-campaign-id="<%=campaign._id%>">
+                        <h1 class="text-2xl font-bold"><%=campaign.name%></h1>
+                        <img class="w-full h-64 object-cover rounded-md my-4" src="<%=campaign.image%>" alt="Campaign Image">
+                        <p class="text-gray-600 mb-4"><%=campaign.description%></p>
+                        <div>
+                            <h2 class="font-semibold">Goal: <%=campaign.goal %></h2>
+                            <h2 class="font-semibold">Currently at: <%=campaign.amount%></h2>
+                        </div>
+                        <div class="relative mt-4 h-4 w-full bg-gray-300 rounded-full overflow-hidden">
+                            <div
+                                class="absolute top-0 left-0 h-full bg-green-500 motion-translate-x-in-[-100%] motion-delay-500 motion-ease-spring-smooth" 
+                                style="width: <%=campaign.progress%>%">
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <h2 class="mt-2">Select amount of donation</h2>
+                            <div class="grid grid-cols-3 grid-rows-2 gap-1.5 donation-btns">
+                                <button class="p-2 text-center rounded-md border-2 shadow-md bg-blue-500 text-white">25</button>
+                                <button class="p-2 text-black text-center rounded-md border-2 shadow-md">50</button>
+                                <button class="p-2 text-black text-center rounded-md border-2 shadow-md">100</button>
+                                <button class="p-2 text-black text-center rounded-md border-2 shadow-md">150</button>
+                                <button class="p-2 text-black text-center rounded-md border-2 shadow-md">250</button>
+                                <button class="p-2 text-black text-center rounded-md border-2 shadow-md other-amount">Other</button>
+                            </div>
+                            <input type="text" readonly value="25" class="w-full h-10 mb-3 p-3 rounded-full donation-input">
+                            <label class="warning-text hidden text-red-600">Warning</label>
+                        </div>
+                        <button class="mt-4 px-4 py-2 bg-yellow-500 text-black font-semibold rounded-md donate-now-btn">DONATE NOW</button>
+                    </div>
+                </li>
+            <% }) %>
+        </ul>
+    </div>
+</div>
+
+<script src="/js/donate.js"></script>

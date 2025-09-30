@@ -1,0 +1,68 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+<div class="mx-3 mt-3 flex flex-col justify-center gap-12 h-full">
+    <section class="mt-5 px-4 lg:px-20">
+        <div class="text-center mb-8">
+            <h1 class="font-bold text-3xl lg:text-4xl">Our Offers</h1>
+            <p class="text-lg text-gray-500 lg:text-xl">Explore they ways you could make a difference!</p>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div class="text-center space-y-4">
+                <a href="/adopt">
+                    <img src="/images/adoption.png" class="w-20 mx-auto" alt="adoption icon">
+                </a>
+                <h2 class="text-xl font-semibold">Adopt</h2>
+                <p class="text-gray-600">Help an animal today and let them join your family.</p>
+            </div>
+            <div class="text-center space-y-4">
+                <a href="/rehome">
+                    <img src="/images/animal-shelter.png" class="w-20 mx-auto" alt="rehome icon">
+                </a>
+                <h2 class="text-xl font-semibold">Rehome</h2>
+                <p class="text-gray-600">Find you pet a new loving home.</p>
+            </div>
+            <div class="text-center space-y-4">
+                <a href="/donate">
+                    <img src="/images/donation.png" class="w-20 mx-auto" alt="donation icon">
+                </a>
+                <h2 class="text-xl font-semibold">Donate</h2>
+                <p class="text-gray-600">Support us and other charities that help animals.</p>
+            </div>
+        </div>
+    </section>
+    <section class="mt-12">
+        <h1 class="text-center font-bold text-3xl">Featured pets</h1>
+        <%- include('swiper_test.ejs', {animals: animals}) %>
+    </section>
+    <section class="mt-12 mb-12 grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <% card.forEach(element => { %>
+            <%-include('partials/card.ejs', {card:element}) %>
+        <% }) %>
+    </section>
+</div>
+
+<script src="/js/handler.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+      var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 1,           
+        watchSlidesProgress: true,   
+        preloadImages: false,        
+        observer: true,      
+        observeParents: true,
+        spaceBetween: 50,
+        pagination: {
+          el: ".swiper-pagination",
+          type: "bullets",
+        },
+        breakpoints : {
+            640 : {
+                slidesPerView : 2
+            },
+            1024 : {
+                slidesPerView : 3
+            }
+
+        }
+      });
+</script>

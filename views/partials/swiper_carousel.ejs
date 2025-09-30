@@ -1,0 +1,10 @@
+<div class="swiper">
+    <div class="swiper-wrapper">
+        <% animals.forEach(element => { %>
+            <div class="swiper-slide">
+                <%- include('animalCard', { pet: element }) %>
+            </div>
+        <% }) %>
+    </div>
+    <div class="swiper-pagination"></div>
+</div>

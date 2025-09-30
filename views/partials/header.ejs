@@ -1,0 +1,135 @@
+<div class="bg-yellow-400 h-16 md:h-20 lg:h-24 place-content-center">
+    <ul class="flex justify-between items-center p-2 w-full text-2xl font-bold">
+        <li class="flex-1 text-left">
+            <svg id="burger-menu" class="w-10 h-auto md:w-12 lg:w-14" viewBox="0 0 64 40" fill="green" xmlns="http://www.w3.org/2000/svg">
+                <rect width="64" height="8" fill="black"/>
+                <rect y="16" width="64" height="8" fill="black"/>
+                <rect y="32" width="64" height="8" fill="black"/>
+            </svg>
+        </li>
+        <li class="flex-2 text-center md:text-3xl lg:text-4xl">FOR ANIMALS</li>
+        <li class="flex-1 text-right flex justify-end">
+            <svg onclick="toggleAccountMenu()" class="w-7 h-auto md:w-8 lg:w-10" viewBox="0 0 24 24" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:none;stroke:#020202;stroke-miterlimit:10;stroke-width:1.91px;}</style></defs><circle class="cls-1" cx="12" cy="7.25" r="5.73"/><path class="cls-1" d="M1.5,23.48l.37-2.05A10.3,10.3,0,0,1,12,13h0a10.3,10.3,0,0,1,10.13,8.45l.37,2.05"/></svg>
+        </li>
+    </ul>
+</div>
+
+<aside id="sidebar" class="fixed inset-0 z-20 transform -translate-x-full bg-yellow-500 transition-transform duration-300 ease-in-out" data-logged-in=<%=isLoggedIn%>>
+    <header class="w-full p-4">
+        <ul class="flex justify-between">
+            <li class="flex-1">
+                <svg class="w-6 h-auto cursor-pointer md:w-10" fill="black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460.775 460.775" onclick="toggleMenu()">
+                    <path d="M285.08,230.397L456.218,59.27c6.076-6.077,6.076-15.911,0-21.986L423.511,4.565c-2.913-2.911-6.866-4.55-10.992-4.55
+                    c-4.127,0-8.08,1.639-10.993,4.55l-171.138,171.14L59.25,4.565c-2.913-2.911-6.866-4.55-10.993-4.55
+                    c-4.126,0-8.08,1.639-10.992,4.55L4.558,37.284c-6.077,6.075-6.077,15.909,0,21.986l171.138,171.128L4.575,401.505
+                    c-6.074,6.077-6.074,15.911,0,21.986l32.709,32.719c2.911,2.911,6.865,4.55,10.992,4.55c4.127,0,8.08-1.639,10.994-4.55
+                    l171.117-171.12l171.118,171.12c2.913,2.911,6.866,4.55,10.993,4.55c4.128,0,8.081-1.639,10.992-4.55l32.709-32.719
+                    c6.074-6.075,6.074-15.909,0-21.986L285.08,230.397z"/>
+                </svg>
+            </li>
+            <li class="flex-1"><h1 class="text-center text-3xl md:text-4xl lg:text-6xl font-bold">MENU</h1></li>
+            <li class="flex-1"><div></div></li>
+        </ul>
+    </header>
+    <div class="h-full w-full flex justify-center items-center">
+        <section class="flex flex-col items-center justify-center text-black font-semibold text-xl text-center md:text-4xl lg:text-5xl md:gap-y-14 lg:gap-y-24" id="nav_links">
+            <div class="flex items-center justify-center  w-24 h-16 md:w-40  lg:w-52">
+                <a href="/" class="min-w-11 min-h-11" >HOME</a>
+            </div>
+            <div class="flex items-center justify-center text-center w-24 h-16 md:w-40  lg:w-52 ">
+                <a href="/adopt" class="min-w-11 min-h-11">ADOPT</a>
+            </div>
+            <div class="flex items-center justify-center w-24 h-16 md:w-40  lg:w-52">
+                <a href="/rehome" class="min-w-11 min-h-11">REHOME</a>
+            </div>
+            <div class="flex items-center justify-center  w-24 h-16 md:w-40  lg:w-52">
+                <a href="/donate" class="min-w-11 min-h-11">DONATE</a>
+            </div>             
+            <%if(!isLoggedIn){%>
+                <div class="flex items-center justify-center  w-24 h-16 md:w-40  lg:w-52">
+                    <a href="/login" class="min-w-11 min-h-11">LOGIN</a>
+                </div>   
+                <div class="flex items-center justify-center  w-24 h-16 md:w-40  lg:w-52">
+                    <a href="/register" class="min-w-11 min-h-11">REGISTER</a>
+                </div>   
+            <%}%>
+            
+        </section>
+    </div>
+    
+</aside>
+
+
+<aside id="accountSideBar" class="fixed inset-0 z-20 transform translate-x-full bg-yellow-500 transition-transform duration-300 ease-in-out" data-logged-in=<%=isLoggedIn%>>
+    <header class="w-full p-4">
+        <ul class="flex justify-between">
+            <li class="flex-1">
+                <svg class="w-6 h-auto cursor-pointer" fill="black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460.775 460.775" onclick="toggleAccountMenu()">
+                <path d="M285.08,230.397L456.218,59.27c6.076-6.077,6.076-15.911,0-21.986L423.511,4.565c-2.913-2.911-6.866-4.55-10.992-4.55
+                c-4.127,0-8.08,1.639-10.993,4.55l-171.138,171.14L59.25,4.565c-2.913-2.911-6.866-4.55-10.993-4.55
+                c-4.126,0-8.08,1.639-10.992,4.55L4.558,37.284c-6.077,6.075-6.077,15.909,0,21.986l171.138,171.128L4.575,401.505
+                c-6.074,6.077-6.074,15.911,0,21.986l32.709,32.719c2.911,2.911,6.865,4.55,10.992,4.55c4.127,0,8.08-1.639,10.994-4.55
+                l171.117-171.12l171.118,171.12c2.913,2.911,6.866,4.55,10.993,4.55c4.128,0,8.081-1.639,10.992-4.55l32.709-32.719
+                c6.074-6.075,6.074-15.909,0-21.986L285.08,230.397z"/>
+                </svg>
+            </li>
+            <li class="flex-1">
+                <h1 class="text-center text-3xl md:text-4xl lg:text-6xl font-bold">ACCOUNT</h1>
+            </li>
+            <li class="flex-1">
+                <div></div>
+            </li>
+        </ul>
+    </header>
+    <div class="h-full w-full flex justify-center items-center">
+        <section class="flex flex-col items-center justify-center text-black font-semibold text-xl text-center md:text-4xl lg:text-5xl md:gap-y-14 lg:gap-y-24">
+            <div class="flex items-center justify-center  w-32 h-16 md:w-52  lg:w-72">
+                <a href="/account/dashboard" class="min-w-11 min-h-11">DASHBOARD</a>
+            </div> 
+            <div class="flex items-center justify-center  w-24 h-16 md:w-40  lg:w-72">
+                <button onclick="logout()" class="min-w-11 min-h-11">LOGOUT</button>
+            </div> 
+        </section>
+    </div>
+    
+</aside>
+
+<script>
+        // const isLoggedInHeader = document.getElementById('sidebar').dataset.loggedIn === true
+        // const nav_links = document.getElementById('nav_links')
+
+        // console.log(isLoggedInHeader)
+    
+        // if (!isLoggedInHeader){
+        //    const login = document.createElement('a')
+        //    const register = document.createElement('a')
+    
+        //    login.href = "/login"
+        //    register.href = "/register"
+    
+        //    login.id = "login"
+        //    register.id = "register"
+    
+        //    login.textContent = "LOGIN"
+        //    register.textContent = "REGISTER"
+    
+        //    nav_links.appendChild(login)
+        //    nav_links.appendChild(register)
+        // }else{
+        //     if (document.getElementById("login")){
+        //         nav_links.removeChild(document.getElementById("login"))
+        //     }
+    
+        //     if (document.getElementById("register")){
+        //         nav_links.removeChild(document.getElementById("register"))
+        //     }
+           
+    
+        // }
+    
+        function logout() {
+            window.location.href = "/account/logout"
+        }
+    </script>
+
+<script src="/js/header.js"></script>

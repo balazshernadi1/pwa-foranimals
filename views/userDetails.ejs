@@ -1,0 +1,95 @@
+<div class="mx-3 mt-8 flex flex-col justify-center items-center gap-12">
+
+    <div class="text-center space-y-4">
+      <h1 class="text-3xl lg:text-4xl font-bold">Hi, <%=user.username%></h1>
+      <p class="text-lg lg:text-xl text-gray-600">We are going to need a few details about you before you can proceed</p>
+    </div>
+    <div id="details-feedback" class="hidden w-full max-w-md mt-4 mb-4 p-3 text-center text-red-600 bg-white rounded-lg font-semibold motion-preset-pop"></div>
+    <div class="max-w-4xl bg-white shadow-xl rounded-lg border-t-4 border-yellow-500 p-6 md:p-8">
+        <form action="" method="post" class="grid grid-cols-1 gap-6 md:grid-cols-2" id="detailsForm">
+
+            <div class="flex flex-col gap-2">
+                <label for="firt-name" class="font-medium text-gray-700">First Name</label>
+                <input required type="text" name="" pattern="^[A-Za-z]+$" id="first-name" autocomplete="given-name" class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
+                    focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
+                  disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
+                  invalid:border-pink-500 invalid:text-pink-600
+                  focus:invalid:border-pink-500 focus:invalid:ring-pink-500">
+            </div>
+    
+            <div class="flex flex-col gap-2">
+                <label for="last-name" class="font-medium text-gray-700">Last name</label>
+                <input required type="text" name="" pattern="^[A-Za-z]+$" id="last-name" autocomplete="family-name" class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
+                    focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
+                  disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
+                  invalid:border-pink-500 invalid:text-pink-600
+                  focus:invalid:border-pink-500 focus:invalid:ring-pink-500">
+            </div>
+    
+            <div class="flex flex-col gap-2">
+                <label for="email-address" class="font-medium text-gray-700">Email address</label>
+                <input required type="text" name="" pattern="^[\w]+(\.[\w]+)*@([\w-]+\.)+[\w-]{2,}$" id="email-address" autocomplete="email" class="cl-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
+                    focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
+                  disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
+                  invalid:border-pink-500 invalid:text-pink-600
+                  focus:invalid:border-pink-500 focus:invalid:ring-pink-500">
+            </div>
+    
+            <div class="flex flex-col gap-2">
+                <label for="phone-number" class="font-medium text-gray-700">Phone number (inc. country code)</label>
+                <input required type="text" name="" pattern="(\d){2}(\d){4,16}" id="phone-number" autocomplete="tel" class="classblock w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
+                    focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
+                  disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
+                  invalid:border-pink-500 invalid:text-pink-600
+                  focus:invalid:border-pink-500 focus:invalid:ring-pink-500">    
+            </div>
+            
+                <div class="flex flex-col gap-2">
+                    <label for="street" class="font-medium text-gray-700">Full street address</label>
+                    <input required type="text" name="" id="street" autocomplete="street-address" class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
+                    focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
+                  disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
+                  invalid:border-pink-500 invalid:text-pink-600
+                  focus:invalid:border-pink-500 focus:invalid:ring-pink-500" >
+                </div>
+                
+                <div class="flex flex-col gap-2">
+                    <label for="postcode" class="font-medium text-gray-700">Postcode</label>
+                    <input required type="text" name="" pattern="\b(GIR ?0AA|SAN ?TA1|(?:[A-PR-UWYZ](?:\d{0,2}|[A-HK-Y]\d|[A-HK-Y]\d\d|\d[A-HJKSTUW]|[A-HK-Y]\d[ABEHMNPRV-Y])) ?\d[ABD-HJLNP-UW-Z]{2})\b" id="postcode" autocomplete="postal-code" class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
+                    focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
+                  disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
+                  invalid:border-pink-500 invalid:text-pink-600
+                  focus:invalid:border-pink-500 focus:invalid:ring-pink-500">
+                </div>
+                
+                <div class="flex flex-col gap-2">
+                    <label for="city" class="font-medium text-gray-700">City</label>
+                    <input required type="text" name="" pattern="[A-z]+" id="city" autocomplete="address-level2" class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
+                    focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
+                  disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
+                  invalid:border-pink-500 invalid:text-pink-600
+                  focus:invalid:border-pink-500 focus:invalid:ring-pink-500">    
+                </div>
+        
+                <div class="flex flex-col gap-2">
+                    <label for="county" class="font-medium text-gray-700">County (Optional)</label>
+                    <input type="text" name="" id="county" pattern="[A-z]+" autocomplete="address-level1" class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
+                    focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
+                  disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
+                  invalid:border-pink-500 invalid:text-pink-600
+                  focus:invalid:border-pink-500 focus:invalid:ring-pink-500">
+                </div>
+                <div class="md:col-span-2 text-center">
+                  <button type="submit"
+                      class="w-full md:w-auto px-6 py-3 text-white bg-yellow-500 hover:bg-yellow-600 rounded-md shadow-lg font-semibold transition duration-300 ease-in-out">
+                      Submit Details
+                  </button>
+              </div>
+        </form>
+    </div>
+    <a id="skip-btn" href="#" class="mb-8 text-yellow-600 underline hover:text-yellow-700 transition">
+      Skip for now
+  </a>
+</div>
+
+<script src="/js/detailsHandler.js"></script>

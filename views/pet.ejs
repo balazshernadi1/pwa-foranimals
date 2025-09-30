@@ -1,0 +1,121 @@
+<div class="container mx-auto px-6 py-12 flex flex-col gap-12">
+
+    <section class="text-left">
+        <a class="text-blue-600 underline hover:text-blue-800" href="/adopt">← Back to all results</a>
+    </section>
+
+
+    <section class="flex flex-col lg:flex-row items-center gap-10 bg-white shadow-lg rounded-lg p-8">
+        <div class="flex-shrink-0">
+            <img class="w-[95%] h-auto  rounded-md border-4 border-gray-200 max-w-sm lg:max-w-md"
+                 src="<%=animal.images[0]%>"
+                 alt="Picture of <%=animal.name%>">
+        </div>
+        <div class="flex-grow">
+            <h1 id="animal-header" data-animal-id="<%=animal._id%>" class="text-4xl font-bold text-gray-800 mb-4">
+                <%=animal.name%>
+            </h1>
+            <p class="text-lg text-gray-600 mb-4">
+                <%=animal.breeds[0]%> | <%=animal.sex%>, <%=animal.age%> years old
+            </p>
+            <span id="fee" data-animal-fee="<%=animal.fee%>" class="text-2xl font-bold text-gray-800 block mb-6">
+                Adoption Fee: £<%=animal.fee%>
+            </span>
+            <button id="adopt-btn"
+                    class="px-8 py-3 bg-yellow-500 text-black text-lg font-semibold rounded-lg shadow hover:bg-yellow-600 transition-all duration-300">
+                Adopt <%=animal.name%> Today
+            </button>
+            <div id="adopt-feedback" class="hidden w-full max-w-md mt-4 mb-4 p-3 text-center text-red-600 bg-white rounded-lg font-semibold motion-preset-pop"></div>
+        </div>
+    </section>
+
+
+    <section class="bg-white shadow-lg rounded-lg p-8">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">Description</h2>
+        <p class="text-gray-600 leading-relaxed">
+            <%=animal.description%>
+        </p>
+    </section>
+
+
+    <section class="bg-white shadow-lg rounded-lg p-8">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">Details</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-gray-600">
+            <% details.forEach((element) => { %>
+                <div class="flex justify-between">
+                    <span class="font-medium"><%=element.name%></span>
+                    <span><%=element.value%></span>
+                </div>
+            <% }) %>
+        </div>
+    </section>
+
+
+    <section class="bg-white shadow-lg rounded-lg p-8">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">Features</h2>
+        <ul class="list-disc list-inside text-gray-600">
+            <% animal.features.forEach(element => { %>
+                <li><%=element%></li>
+            <% }) %>
+        </ul>
+    </section>
+</div>
+
+<script>
+
+
+
+    const adopt_button = document.getElementById("adopt-btn")
+
+    adopt_button.addEventListener("click", ()=>{
+        sendAdoption()
+    })
+
+    async function sendAdoption() {
+
+        const animal_id = document.getElementById("animal-header").dataset.animalId
+        const animal_fee = document.getElementById("fee").dataset.animalFee
+
+        try{
+            const response = await fetch("/payment/initiate-payment", {
+                method : "POST",
+                headers : {
+                    "Content-Type" : "application/json",
+                    "X-Fetch-Call" : "true"
+                },
+                body : JSON.stringify({product_type : "adoption", product_id : animal_id , price : animal_fee})
+            })
+
+            const data = await response.json()
+
+            if (!response.ok){
+                displayMessage(data.message)
+            }
+
+            if (data.redirectTo){
+                setTimeout(()=>{
+                window.location.href = data.redirectTo 
+                },3000)
+            }
+        }catch(error){ 
+            alert("An unexpected error has occured!")
+        }
+    }
+
+    function displayMessage(message){
+        const adopt_feedback = document.getElementById("adopt-feedback")
+
+        adopt_feedback.classList.remove("hidden")
+        adopt_feedback.classList.remove("motion-opacity-out-0")
+
+        if (adopt_feedback.textContent != message){
+            adopt_feedback.textContent = message
+        }
+
+        setTimeout(()=>{
+                adopt_feedback.classList.add("motion-opacity-out-0")
+            }, 3000)
+
+        }
+
+</script>

@@ -1,0 +1,127 @@
+<div class="mx-auto mt-6 max-w-6xl px-4 flex flex-col gap-8">
+    <div class="text-center">
+        <h1 class="text-3xl lg:text-4xl font-extrabold text-gray-800">Welcome back, <%= user.username %>!</h1>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mb-8">
+
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+            <div class="bg-gradient-to-r from-yellow-400 to-yellow-500 p-4">
+                <h2 class="text-lg font-bold text-white">Adopted Animals</h2>
+            </div>
+            <div id="adopt-container" class="p-4 space-y-3">
+                <% if (adoptedAnimals.length) { %>
+                    <% adoptedAnimals.forEach(animal => { %>
+                        <div id="container-<%=animal._id%>" class="flex items-center gap-4 border-b pb-2">
+                            <img src="<%=animal.images[0]%>" alt="<%= animal.name %>" class="w-16 h-16 rounded-md shadow-md object-cover">
+                            <div class="flex-1">
+                                <p class="text-lg font-semibold text-gray-700"><%= animal.name %></p>
+                                <p class="text-sm text-gray-500"><%= animal.species %></p>
+                            </div>
+                            <% if (animal.adoptionStatus === "Adopted") { %>
+                            <span class="text-sm font-medium text-green-600"><%=animal.adoptionStatus%></span>
+                            <% }else { %>
+                            <span class="text-sm font-medium text-green-600"><%=animal.adoptionStatus%></span>
+                            <button class="text-green-600 hover:text-green-700 font-semibold finalise-btn" data-animal-id="<%=animal._id%>">FINALISE</button>
+                            <button data-animal-id="<%=animal._id%>" 
+                                class="text-red-500 hover:text-red-700 font-semibold cancel-btn">
+                                CANCEL
+                            </button>
+                            <%}%>
+                        </div>
+                    <% }) %>
+                <% } else { %>
+                    <p class="text-gray-500">No Adopted Animals</p>
+                <% } %>
+            </div>
+        </div>
+
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+            <div class="bg-gradient-to-r from-blue-400 to-blue-500 p-4">
+                <h2 class="text-lg font-bold text-white">Favourite Animals</h2>
+            </div>
+            <div class="p-4 space-y-3">
+                <% if (favouriteAnimals.length) { %>
+                    <% favouriteAnimals.forEach(animal => { %>
+                        <div class="flex items-center gap-4 border-b pb-2">
+                            <img src="<%= animal.images[0]%>" alt="<%= animal.name %>" class="w-16 h-16 rounded-md shadow-md object-cover">
+                            <div class="flex-1">
+                                <p class="text-lg font-semibold text-gray-700"><%= animal.name %></p>
+                                <p class="text-sm text-gray-500"><%= animal.species %></p>
+                            </div>
+                            <span class="text-sm font-medium text-yellow-600"><%= animal.status %></span>
+                            <button class="text-red-500 hover:text-red-700 font-semibold transition duration-300">
+                                REMOVE FROM FAVOURITES
+                            </button>
+                        </div>
+                    <% }) %>
+                <% } else { %>
+                    <p class="text-gray-500">No Favourite Animals</p>
+                <% } %>
+            </div>
+        </div>
+
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+            <div class="bg-gradient-to-r from-green-400 to-green-500 p-4">
+                <h2 class="text-lg font-bold text-white">Rehomed Animals</h2>
+            </div>
+            <div id="rehome-container" class="p-4 space-y-3">
+                <% if (rehomedAnimals.length) { %>
+                    <% rehomedAnimals.forEach(animal => { %>
+                        <div id="container-<%=animal._id%>" class="flex items-center gap-4 border-b pb-2">
+                            <img src="<%= animal.images[0]%>" alt="<%= animal.name %>" class="w-16 h-16 rounded-md shadow-md object-cover">
+                            <div class="flex-1">
+                                <p class="text-lg font-semibold text-gray-700"><%= animal.name %></p>
+                                <p class="text-sm text-gray-500"><%= animal.species %></p>
+                            </div>
+                            <span class="text-sm font-medium text-purple-600"><%= animal.adoptionStatus %></span>
+                            <button data-animal-id="<%=animal._id%>"
+                                class="text-red-500 hover:text-red-700 font-semibold transition duration-300 remove-from-site-btn">
+                                REMOVE FROM SITE
+                            </button>
+                        </div>
+                    <% }) %>
+                <% } else { %>
+                    <p class="text-gray-500">No Rehomed Animals</p>
+                <% } %>
+            </div>
+        </div>
+
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+            <div class="bg-gradient-to-r from-pink-400 to-pink-500 p-4">
+                <h2 class="text-lg font-bold text-white">Donation History</h2>
+            </div>
+            <div class="p-4 space-y-3">
+                <% if (donations.length) { %>
+                    <% donations.forEach(donation => { %>
+                        <div class="flex justify-between items-center border-b pb-2">
+                            <span class="text-gray-700 font-medium"><%= donation.campaignName %></span>
+                            <span class="text-lg font-semibold text-green-600">£<%= donation.userDonated %></span>
+                        </div>
+                    <% }) %>
+                <% } else { %>
+                    <p class="text-gray-500">No donations yet.</p>
+                <% } %>
+            </div>
+        </div>
+    </div>
+
+    <div id="spinner-overlay" 
+    class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center z-50">
+   <div class="flex flex-col items-center">
+       <div class="w-16 h-16 border-4 border-blue-400 border-t-transparent rounded-full animate-spin"></div>
+       <p class="mt-4 text-white font-semibold text-lg">Finalising adoption...</p>
+   </div>
+    </div>
+
+    <div id="warning-pop-up" 
+    class="fixed hidden inset-0 flex items-center justify-center z-50">
+   <div class="flex flex-col justify-center items-center bg-white p-8 rounded-lg shadow-lg">
+       <p class="text-center  text-red-600 font-semibold text-lg"></p>
+   </div>
+    </div>
+
+</div>
+
+<script src="/js/dashboard.js">
+</script>

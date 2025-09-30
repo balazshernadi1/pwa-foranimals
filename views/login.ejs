@@ -1,0 +1,95 @@
+<div class="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-yellow-300 via-yellow-400 to-yellow-500">
+    <div id="login-feedback" class="hidden w-full max-w-md mb-4 p-3 text-center bg-white text-red-600 rounded-lg font-semibold motion-preset-pop"></div>
+    <div class="mr-3 ml-3 w-full max-w-md bg-white bg-opacity-90 shadow-2xl rounded-lg p-6">
+        <h1 class="text-center font-bold text-3xl text-gray-800 mb-6">Log in to Your Account</h1>
+        <form action="" class="flex flex-col gap-6" id="loginForm">
+            <div class="flex flex-col gap-2">
+                <label for="username" class="text-gray-700 font-medium">Username</label>
+                <input type="text" required name="username" id="usern" placeholder="Enter your username"
+                    class="mt-1 block w-full px-4 py-3 bg-gray-100 border border-gray-300 rounded-lg text-gray-700 focus:outline-none focus:border-yellow-500 focus:ring-2 focus:ring-yellow-400">
+            </div>
+            <div class="flex flex-col gap-2">
+                <label for="password" class="text-gray-700 font-medium">Password</label>
+                <input type="password" required name="password" id="pass" placeholder="Enter your password"
+                    class="mt-1 block w-full px-4 py-3 bg-gray-100 border border-gray-300 rounded-lg text-gray-700 focus:outline-none focus:border-yellow-500 focus:ring-2 focus:ring-yellow-400">
+            </div>
+            <button type="submit"
+                class="w-full py-3 bg-yellow-500 hover:bg-yellow-600 transition-all duration-300 text-white font-bold rounded-lg shadow-md">
+                Log In
+            </button>
+        </form>
+        <div class="text-center mt-8">
+            <p class="text-gray-700">Don't have an account? No problem!</p>
+            <a href="/register"
+                class="inline-block mt-4 px-6 py-2 bg-yellow-500 hover:bg-yellow-600 transition-all duration-300 text-white font-bold rounded-lg shadow-md">
+                Register Now
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', ()=>{
+
+    const form = document.getElementById('loginForm')
+
+    form.addEventListener('submit', (event)=>{
+        event.preventDefault()
+        loginUser()
+    })
+    })
+
+    async function loginUser() {
+        const username =  document.getElementById('usern').value
+        const password =  document.getElementById('pass').value
+
+        const response = await fetch("/login/loginUser", {
+            method : "POST",
+            headers : {
+                "Content-Type" : "application/json"
+            },
+            body : JSON.stringify({
+                username : username,
+                password : password
+            })
+        })
+
+        const data = await response.json()
+
+        if (!response.ok){
+            return handleLoginError(response.status, data.message)
+        }
+
+        
+
+        if (data.success){
+            window.location.href = data.redirectTo
+        }
+    }
+
+    function handleLoginError(status, message){
+        switch (status){
+            case 401 : 
+            case 404 : displayMessage("Invalid username or password! Please try again")
+            break
+            default : displayMessage(message || "An unexpected error has occured please try again later!")
+        }
+    }
+
+    function displayMessage(message){
+        const login_feedback = document.getElementById("login-feedback")
+
+        login_feedback.classList.remove("hidden")
+        login_feedback.classList.remove("motion-opacity-out-0")
+
+        if (login_feedback.textContent != message){
+            login_feedback.textContent = message
+        }
+
+        setTimeout(()=>{
+                login_feedback.classList.add("motion-opacity-out-0")
+            }, 3000)
+    }
+
+</script>

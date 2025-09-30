@@ -1,0 +1,43 @@
+<div class="mx-4 mt-6 mb-8 flex flex-col justify-center items-center gap-8">
+
+    <h1 id="pay-header" data-payment-id="<%=payment.hashedId%>" 
+        class="text-2xl font-bold text-gray-800 text-center">
+        Payment ID: <span class="text-yellow-500"><%=payment.id%></span> | 
+        <span class="text-gray-500 text-lg"><%=payment.date%></span>
+    </h1>
+
+
+    <div class="w-full max-w-md bg-white rounded-lg shadow-lg p-6 border border-gray-200 space-y-4">
+        <div class="space-y-2">
+            <h2 class="text-lg font-semibold text-gray-700">
+                Username: <span class="text-gray-800 font-bold"><%=payment.username%></span>
+            </h2>
+            <h3 class="text-gray-600">
+                Product: <span class="text-gray-800 font-bold"><%=payment.product.type%> - <%=payment.product.name%></span>
+            </h3>
+            <h3 class="text-gray-700 font-bold text-xl">
+                Price: £<%=payment.price%>
+            </h3>
+        </div>
+
+        <div class="flex flex-col items-center justify-center gap-4">
+            <button id="pay-btn" 
+                class="w-full px-6 py-3 bg-gradient-to-br from-green-400 to-green-600 text-white font-bold rounded-lg shadow-md hover:bg-green-700 transition-all duration-300">
+                Confirm Payment
+            </button>
+            <span class="text-gray-500 text-sm text-center">
+                You will be taken to a third party to proceed with the payment.
+            </span>
+        </div>
+    </div>
+
+    <div id="spinner-overlay" 
+         class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center z-50">
+        <div class="flex flex-col items-center">
+            <div class="w-16 h-16 border-4 border-blue-400 border-t-transparent rounded-full animate-spin"></div>
+            <p class="mt-4 text-white font-semibold text-lg">Processing Payment...</p>
+        </div>
+    </div>
+</div>
+
+<script src="/js/paymentHandler.js"></script>

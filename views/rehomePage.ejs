@@ -1,0 +1,58 @@
+<div class="mx-3 mt-3 flex flex-col justify-center gap-12">
+    
+   <section class="mt-6">
+        <div class="text-center space-y-2">
+            <h1 class="font-bold text-3xl lg:text-4xl">Rehome Your Pet</h1>
+            <p class="text-gray-500 text-lg lg:text-xl">We understand that it can be difficult to find a new loving home for your pet. <br> This is why we offer our rehoming service to help you find the best family for your pet</p>
+        </div>
+   </section>
+   
+    <section class="mt-12">
+        <div class="text-center space-y-2">
+            <h2 class="font-bold text-3xl lg:text-4xl">Our recent stats</h2>
+            <div class="overflow-hidden w-full relative rounded-sm shadow-md p-4 bg-gradient-to-br from-yellow-300 via-yellow-400 to-yellow-500">
+                <div class="flex gap-6 animate-marquee">
+                <% stats.forEach(stat => { %>
+                    <div class="flex-none grid gap-2 w-48 bg-gray-100 p-4 rounded-lg shadow-lg text-center border border-gray-200">
+                        <h3 class="font-semibold text-lg text-blue-600"><%=stat.username%></h3>
+                        <span class="block text-sm text-gray-800 font-bold"><%=stat.message%></span>
+                        <p class="italic text-sm text-gray-700"><%=stat.product%></p>
+                    </div>
+                <% }) %>
+                </div>
+            </div>
+        </div>
+   </section>
+
+
+   <section id="rehome-initation" data-logged-in="<%=isLoggedIn%>" class="flex justify-center mt-12 mb-8">
+        <div class="text-center space-y-4">
+            <h2 class="font-bold text-3xl lg:text-4xl">
+                Your pet's rehoming process begins here
+            </h2>
+            <button id="rehome-btn" class="px-8 py-3 lg:px-10 lg:py-5 rounded-lg shadow-lg bg-gradient-to-br from-yellow-300 via-yellow-400 to-yellow-500">
+                Rehome Now
+            </button>
+        </div>
+    </section>
+</div>
+
+<script>
+    const isLoggedIn = document.getElementById('rehome-initation').dataset.loggedIn
+    const rehomeBtn = document.getElementById('rehome-btn')
+
+    console.log(isLoggedIn)
+
+    if(!isLoggedIn){
+        rehomeBtn.setAttribute("disabled", true)
+    }else{
+        rehomeBtn.removeAttribute("disabled")
+    }
+
+    rehomeBtn.addEventListener("click", ()=>{
+
+        window.location.href = "/rehome/pet-details"
+
+    })
+
+</script>

@@ -1,0 +1,33 @@
+<div class="flex flex-col justify-center items-center gap-8 min-h-screen bg-gradient-to-br from-yellow-300 via-yellow-400 to-yellow-500">
+
+   
+    <div class="bg-white shadow-lg rounded-lg p-6 max-w-md text-center space-y-4 motion-preset-fade-md mr-3 ml-3">
+
+        <h1 class="text-3xl font-bold text-gray-800">Thank You, 
+            <span class="text-yellow-500"><%=user.firstname%> <%=user.lastname%></span>!
+        </h1>
+
+        <p class="text-lg text-gray-600"><%=message%></p>
+
+        <div class="text-6xl animate-bounce">🎉</div>
+
+        <div>
+            <a id="go-to" href="/" 
+               class="inline-block w-full px-6 py-3 bg-gradient-to-br from-yellow-400 to-yellow-500 text-white font-bold rounded-md shadow-md hover:shadow-lg hover:bg-yellow-600 transition-all duration-300">
+                Return to Home Page
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    const id = new URL(window.location.href).searchParams.get("id")
+
+    if(id){
+        const link = document.getElementById("go-to")
+        link.textContent = "Upload images"
+        link.href = `/rehome/upload?id=${id}`
+    }
+
+</script>

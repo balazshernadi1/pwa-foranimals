@@ -1,0 +1,29 @@
+<div class="flex flex-col justify-center items-center h-screen bg-gray-100 px-4">
+    <div class="text-center bg-white shadow-lg rounded-lg p-6 md:p-8 max-w-lg">
+        <h1 class="text-2xl md:text-4xl font-extrabold text-gray-800 mb-4 animate-bounce">
+            Looks like you lost connection!
+        </h1>
+        <img src="/images/sad_dog.png" alt="A SAD DOG"
+             class="w-48 md:w-64 mx-auto mb-6 animate-pulse">
+        
+        <p class="text-gray-600 text-sm md:text-lg mb-4">
+            Oops! It seems like you're offline. Don't worry, try reloading the page.
+        </p>
+
+        <button id="reload-btn"
+                class="bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-white font-semibold px-6 py-3 rounded-lg shadow-md transition-all duration-300 transform hover:scale-105">
+            Retry
+        </button>
+    </div>
+</div>
+
+<script>
+
+const reload_btn = document.getElementById("reload-btn")
+reload_btn.addEventListener("click", ()=>{
+    window.location.reload()
+})
+
+
+
+</script>
